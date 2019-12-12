@@ -1,0 +1,19 @@
+version: '3'
+
+services:
+
+ web:
+    image: nginx:latest
+    ports:
+        - "8080:80"
+    volumes:
+        - ./www:/var/www/html
+        - ./site.conf:/etc/nginx/conf.d/site.conf
+    privileged: true
+
+ php:
+    build: ./
+    image: "php"
+    volumes:
+        - ./www:/var/www/html
+    privileged: true
