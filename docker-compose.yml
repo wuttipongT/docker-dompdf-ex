@@ -3,7 +3,8 @@ version: '3'
 services:
 
  web:
-    image: nginx:latest
+    image: nginx:stable-alpine
+    container_name: webserver
     ports:
         - "8080:80"
     volumes:
@@ -13,7 +14,8 @@ services:
 
  php:
     build: ./
-    image: "php"
+    image: "php-fpm"
+    container_name: php71fpm
     volumes:
         - ./www:/var/www/html
     privileged: true
